@@ -3,82 +3,65 @@ from bs4 import BeautifulSoup
 import re
 from config import data, post_data
 
-cookies = {
-    'NSC_JOvli21vbwcnm34cfqy1czem22l1tbm': 'ffffffff09e9fa0145525d5f4f58455e445a4a42378b',
-    '_gid': 'GA1.3.770700420.1743728816',
-    '_hjSessionUser_1955131': 'eyJpZCI6ImVmZDQzNzE5LTc3MDQtNTYyZi05N2EwLThiNmM3NzcwMTNiNiIsImNyZWF0ZWQiOjE3NDM3Mjg4MTU4MjUsImV4aXN0aW5nIjpmYWxzZX0=',
-    '_uetsid': '1a0afb9010f111f09f343d476f87cb77',
-    '_uetvid': '1a0b104010f111f08ad1bfd9b841a4d4',
-    'nvg55705': '1603eadda497588d39e5fdf9b610|0_94',
-    '_clck': '1mao1gj%7C2%7Cfus%7C0%7C1920',
-    '_clsk': '1imt4ge%7C1743728816755%7C1%7C1%7Cn.clarity.ms%2Fcollect',
-    'cto_bundle': 'UsKaGF94U3JWR2llY3ZMUW1rWXhnVFBERyUyRmtybU1RTFczVDNqaGR3RDlHQk1FdVNBa0J0MWVjNCUyRk5BUDdVbkZpeCUyRjZXbnBEaHJLbDJuVVloeWZOaHklMkZLSmV5UXkzUnR5OG93UXh5JTJGYUZlM2RmVDQ3V0ZvVkdhSEpPbWJKYVN3bG1QNzZGejR2U05CWXB1MWZia2tkN1czakt3JTNEJTNE',
-    'lumClientId': '8A61649095B0A4C20195FE566FF824CC',
-    'lumUserLocale': 'pt_BR',
-    '__app': 'prestador',
-    '__site': 'sulamerica-saude',
-    'tel': 'central_atendimento_doctorline.gif',
-    '__utmc': '11233718',
-    '__utmz': '11233718.1743728922.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)',
-    'liveagent_oref': 'https://saude.sulamericaseguros.com.br/prestador/',
-    'liveagent_ptid': '5db721da-9de4-4f60-b20b-ef2a207f405b',
-    '__codp': '100000009361',
-    '_ga_565NE9S6RK': 'GS1.3.1743728816.1.1.1743729644.60.0.0',
-    '_ga_XDNXH4S93Y': 'GS1.1.1743728815.1.1.1743729652.0.0.676466996',
-    '_ga_YZ8V1YKTQR': 'GS1.1.1743728815.1.1.1743729652.0.0.0',
-    '__utma': '11233718.767877916.1743728816.1743734252.1743737519.3',
-    'liveagent_sid': '3bae6ff8-edc8-414f-8085-d6621054740d',
-    'liveagent_vc': '5',
-    'lumIsLoggedUser': 'false',
-    'lumUserId': '00000000D00000000000000000000002',
-    'JSESSIONID': 'Z4Bs6unGO15HpEFSxiDX2wF3zlkoqFNr5Yd44v5I.s01jbs159',
-    'lumUserSessionId': 'q2R0nTvrV2KrmQNcovs7YNIGp-1y-yB3',
-    '_gat': '1',
-    '__page': 'Home | SulAmerica',
-    '_ga': 'GA1.1.767877916.1743728816',
-    '_ga_GT8PCDTCXZ': 'GS1.3.1743743886.3.0.1743743886.60.0.0',
-    '_dd_s': 'rum=2&id=ead37607-e46d-4012-8573-05a26d6e550c&created=1743743886735&expire=1743744807151',
-    '_ga_8MDSH1YG45': 'GS1.1.1743743886.4.1.1743743907.0.0.0',
-    '_ga_M3S5VMZ7VB': 'GS1.1.1743743886.4.1.1743743907.0.0.0',
-    '_ga_3HQMVENFZW': 'GS1.1.1743743887.4.1.1743743907.0.0.0',
-    'ADRUM': 's=1743743907193&r=https%3A%2F%2Fsaude.sulamericaseguros.com.br%2Fprestador%2Flogin%2F%3F877518778',
-}
-
 headers = {
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
     'accept-language': 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7',
-    'cache-control': 'max-age=0',
-    'content-type': 'application/x-www-form-urlencoded',
-    'dnt': '1',
-    'origin': 'https://saude.sulamericaseguros.com.br',
-    'priority': 'u=0, i',
-    'referer': 'https://saude.sulamericaseguros.com.br/prestador/login/?accessError=2',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36',
     'sec-ch-ua': '"Chromium";v="134", "Not:A-Brand";v="24", "Google Chrome";v="134"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
-    'sec-fetch-dest': 'document',
-    'sec-fetch-mode': 'navigate',
-    'sec-fetch-site': 'same-origin',
-    'sec-fetch-user': '?1',
     'upgrade-insecure-requests': '1',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36',
-    # 'cookie': 'NSC_JOvli21vbwcnm34cfqy1czem22l1tbm=ffffffff09e9fa0145525d5f4f58455e445a4a42378b; _gid=GA1.3.770700420.1743728816; _hjSessionUser_1955131=eyJpZCI6ImVmZDQzNzE5LTc3MDQtNTYyZi05N2EwLThiNmM3NzcwMTNiNiIsImNyZWF0ZWQiOjE3NDM3Mjg4MTU4MjUsImV4aXN0aW5nIjpmYWxzZX0=; _uetsid=1a0afb9010f111f09f343d476f87cb77; _uetvid=1a0b104010f111f08ad1bfd9b841a4d4; nvg55705=1603eadda497588d39e5fdf9b610|0_94; _clck=1mao1gj%7C2%7Cfus%7C0%7C1920; _clsk=1imt4ge%7C1743728816755%7C1%7C1%7Cn.clarity.ms%2Fcollect; cto_bundle=UsKaGF94U3JWR2llY3ZMUW1rWXhnVFBERyUyRmtybU1RTFczVDNqaGR3RDlHQk1FdVNBa0J0MWVjNCUyRk5BUDdVbkZpeCUyRjZXbnBEaHJLbDJuVVloeWZOaHklMkZLSmV5UXkzUnR5OG93UXh5JTJGYUZlM2RmVDQ3V0ZvVkdhSEpPbWJKYVN3bG1QNzZGejR2U05CWXB1MWZia2tkN1czakt3JTNEJTNE; lumClientId=8A61649095B0A4C20195FE566FF824CC; lumUserLocale=pt_BR; __app=prestador; __site=sulamerica-saude; tel=central_atendimento_doctorline.gif; __utmc=11233718; __utmz=11233718.1743728922.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); liveagent_oref=https://saude.sulamericaseguros.com.br/prestador/; liveagent_ptid=5db721da-9de4-4f60-b20b-ef2a207f405b; __codp=100000009361; _ga_565NE9S6RK=GS1.3.1743728816.1.1.1743729644.60.0.0; _ga_XDNXH4S93Y=GS1.1.1743728815.1.1.1743729652.0.0.676466996; _ga_YZ8V1YKTQR=GS1.1.1743728815.1.1.1743729652.0.0.0; __utma=11233718.767877916.1743728816.1743734252.1743737519.3; liveagent_sid=3bae6ff8-edc8-414f-8085-d6621054740d; liveagent_vc=5; lumIsLoggedUser=false; lumUserId=00000000D00000000000000000000002; JSESSIONID=Z4Bs6unGO15HpEFSxiDX2wF3zlkoqFNr5Yd44v5I.s01jbs159; lumUserSessionId=q2R0nTvrV2KrmQNcovs7YNIGp-1y-yB3; _gat=1; __page=Home | SulAmerica; _ga=GA1.1.767877916.1743728816; _ga_GT8PCDTCXZ=GS1.3.1743743886.3.0.1743743886.60.0.0; _dd_s=rum=2&id=ead37607-e46d-4012-8573-05a26d6e550c&created=1743743886735&expire=1743744807151; _ga_8MDSH1YG45=GS1.1.1743743886.4.1.1743743907.0.0.0; _ga_M3S5VMZ7VB=GS1.1.1743743886.4.1.1743743907.0.0.0; _ga_3HQMVENFZW=GS1.1.1743743887.4.1.1743743907.0.0.0; ADRUM=s=1743743907193&r=https%3A%2F%2Fsaude.sulamericaseguros.com.br%2Fprestador%2Flogin%2F%3F877518778',
 }
 
 with requests.Session() as s:
     login_url = 'https://saude.sulamericaseguros.com.br/prestador/login/?accessError=2'
-    r = s.get(login_url)
+    print("Acessando página de login para obter cookies...")
+    r = s.get(login_url, headers=headers)
     
-    login_response = s.post(login_url, cookies=cookies, headers=headers, data=data)
+    login_headers = headers.copy()
+    login_headers.update({
+        'content-type': 'application/x-www-form-urlencoded',
+        'origin': 'https://saude.sulamericaseguros.com.br',
+        'referer': login_url,
+    })
+
+    print("Fazendo login...")
+    login_response = s.post(login_url, headers=login_headers, data=data)
+
     if login_response.status_code == 200:
-        print("Login realizado com sucesso")
+        # Verificar se o login foi bem-sucedido
+        if "accessError" in login_response.url:
+            print("Falha no login. Verifique suas credenciais.")
+            exit()
+        else:
+            print("Login realizado com sucesso!")
+    else:
+        print(f"Erro na requisição de login: {login_response.status_code}")
+        exit()
     
     consulta_url = 'https://saude.sulamericaseguros.com.br/prestador/servicos-medicos/contas-medicas/faturamento-tiss-3/faturamento/guia-de-consulta/'
-    acessar_consulta = s.get(consulta_url)
+    print("Acessando página de consulta...")
+
+    consulta_headers = headers.copy()
+    consulta_headers.update({
+        'referer': 'https://saude.sulamericaseguros.com.br/prestador/',
+    })
+
+    acessar_consulta = s.get(consulta_url, headers=consulta_headers)
+
+    post_headers = consulta_headers.copy()
+    post_headers.update({
+        'content-type': 'application/x-www-form-urlencoded',
+        'origin': 'https://saude.sulamericaseguros.com.br',
+        'referer': consulta_url,
+    })
+
+    print("Pesquisando...")
+    response = s.post(consulta_url, headers=post_headers, data=post_data)
     
-    # enviar os dados do post para obter a resposta com os dados
-    response = s.post(consulta_url, cookies=cookies, headers=headers, data=post_data)
+
     if response.status_code == 200:
+        print("Extraindo dados...")
         soup = BeautifulSoup(response.text, 'html.parser')
         
         dados_extraidos = {}
@@ -119,6 +102,9 @@ with requests.Session() as s:
         dados_extraidos['E-mail Funcionário'] = extrair_valor_apos_strong(soup, 'E-mail Funcionário:')
         
         # exibindo os dados
+
+        print("\nDados extraídos:")
+        print("-" * 40)
         for campo, valor in dados_extraidos.items():
             if valor:
                 print(f"{campo}: {valor}")
@@ -127,3 +113,4 @@ with requests.Session() as s:
                 
     else:
         print(f"Erro na requisição: {response.status_code}")
+        print(response.text[:200])
