@@ -1,0 +1,33 @@
+data = {
+    'lumNewParams': '<parameters destId="8A61890A697C8A4C01697C9D3DE0250E" destType="lumII"><p n="lumFromForm">Form_8A61890A697C8A4C01697C9D3DE0250E</p><p n="lumFormAction">https://saude.sulamericaseguros.com.br/main.jsp?lumPageId=8A61898253CE1C780153D20B7FF82329&amp;lumA=1&amp;lumII=8A61890A697C8A4C01697C9D3DE0250E</p><p n="doui_processActionId">loginPrestador</p><p n="doui_fromForm">Form_8A61890A697C8A4C01697C9D3DE0250E</p><p n="lumII">8A61890A697C8A4C01697C9D3DE0250E</p><p n="code">100000009361</p><p n="user">master</p><p n="senha">837543</p></parameters>',
+    'lumPrinting': '',
+    'lumToggleModeOriginUrl': '',
+    'lumSafeRenderMode': '',
+    'lumPageOriginalUrl': 'main.jsp?lumPageId=8A61898253CE1C780153D20B7FF82329',
+    'lumS': '',
+    'lumSI': '',
+    'lumI': '',
+    'lumII': '8A61890A697C8A4C01697C9D3DE0250E',
+    'lumReplIntfState': '',
+    'lumPrevParams': '%3CallParameters%3E%3Cparameters%3E%3Cp+n%3D%22accessError%22%3E2%3C%2Fp%3E%3Cp+n%3D%22lumChannelId%22%3E8A488A8E2849180101285A25D21C299E%3C%2Fp%3E%3C%2Fparameters%3E%3C%2FallParameters%3E',
+    'lumA': '1',
+    'lumDataPreviewMode': '',
+    'lumClientMessage': '',
+}
+
+post_data = {
+    'lumNewParams': '<parameters destId="8A61F5C6407D868201407DAA886A1760" destType="lumII"><p n="lumFromForm">Form_8A61F5C6407D868201407DAA886A1760</p><p n="lumFormAction">https://saude.sulamericaseguros.com.br/main.jsp?lumPageId=8A61F5C6407D868201407DAA819A16FF&amp;lumA=1&amp;lumII=8A61F5C6407D868201407DAA886A1760</p><p n="doui_processActionId">commit</p><p n="doui_fromForm">Form_8A61F5C6407D868201407DAA886A1760</p><p n="lumII">8A61F5C6407D868201407DAA886A1760</p><p n="tipo-guia">consulta</p><p n="codigo-beneficiario-1">557</p><p n="codigo-beneficiario-2">88888</p><p n="codigo-beneficiario-3">4851</p><p n="codigo-beneficiario-4">7766</p><p n="codigo-beneficiario-5">0015</p><p n="validaCampoVermelho">vermelho</p></parameters>',
+    'lumPrinting': '',
+    'lumToggleModeOriginUrl': '',
+    'lumSafeRenderMode': '',
+    'lumPageOriginalUrl': 'main.jsp?lumPageId=8A61F5C6407D868201407DAA819A16FF',
+    'lumS': '',
+    'lumSI': '',
+    'lumI': '',
+    'lumII': '8A61F5C6407D868201407DAA886A1760',
+    'lumReplIntfState': '',
+    'lumPrevParams': '%3CallParameters%3E%3Cparameters%3E%3Cp%20n%3D%22lumChannelId%22%3E8A61F5C6407D868201407DAA804316F9%3C%2Fp%3E%3C%2Fparameters%3E%3C%2FallParameters%3E',
+    'lumA': '1',
+    'lumDataPreviewMode': '',
+    'lumClientMessage': '',
+}
